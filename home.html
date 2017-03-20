@@ -3,7 +3,64 @@
 <head>
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="styles/master.css">
-	<link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Signika+Negative' rel='stylesheet' type='text/css'>
+	<script type="text/javascript">
+	<!--	
+		function inputbox(dom)
+		{
+			dom.value="";
+		}
+		function change(type)
+		{
+			var loginhtml="<label id=\"usnlabel\" for=\"usn\">USN</label><br><input id=\"usn\" type=\"textbox\"name=\"usn\" /><label id=\"passlabel\" for=\"password\">PASSWORD</label><br><input id=\"pass\" type=\"textbox\" name=\"password\"/>";
+			var signuphtml="<label id=\"passlabel1\" for=\"password\">RE-ENTER PASSWORD</label><br><input id=\"pass1\" type=\"textbox\" name=\"password1\"/>";
+			dom=document.getElementById("input-container");
+			if(type=='login')
+			{
+				login=document.getElementById("loginform");
+				login.style.backgroundColor="#110b15";
+				login.style.color="#dcd5bb";
+				signup=document.getElementById("signupform");
+				signup.style.backgroundColor="#dcd5bb";
+				signup.style.color="#110b15";
+				dom.innerHTML=loginhtml;
+				document.getElementById("submitbtn").innerHTML="Login";
+			}
+			else if(type=='signup')
+			{
+				signup=document.getElementById("signupform");
+				signup.style.backgroundColor="#110b15";
+				signup.style.color="#dcd5bb";
+				login=document.getElementById("loginform");
+				login.style.backgroundColor="#dcd5bb";
+				login.style.color="#110b15";
+				dom.innerHTML=loginhtml+signuphtml;
+				document.getElementById("submitbtn").innerHTML="Sign Up";
+			}
+		}
+		function authenticate()
+		{
+			dom1=document.getElementById("pass");
+			dom2=document.getElementById("pass1");
+			dom3=document.getElementById("submitbtn");
+			dom4=document.getElementById("usn");
+			if(dom3.innerHTML=='Login')
+				type='login';
+			else if(dom3.innerHTML=='Sign Up')
+				type='signup';
+			if(dom4.value=="" || dom1.value=="" || (type=='signup' && dom2.value==""))
+			{	alert("Enter all fields");
+				window.location.href = "home.html";
+			}
+			else if(dom1.value != dom2.value)
+			{
+				alert("Passwords dont match");
+				window.location.href = "home.html";
+			}
+		}
+
+	//-->
+	</script>
 </head>
 <body>
 	<div class="page-container" id="firstpage">
@@ -15,12 +72,25 @@
 		</div>
 	</div>
 	<div class="page-container" id="userinput">
-		<div class="input" id="loginform">
-			login here
+		
+		<div class="input" id="">
+			<div class="inputformhead" id="loginform" onclick="change('login')">Login</div>
+			<div class="inputformhead" id="signupform" onclick="change('signup')">Sign Up</div>
+			<form action="signup_voter.php" method="post">
+				<div id="input-container">
+					<label id="usnlabel" for="usn">USN</label><br>
+					<input id="usn" type="textbox" name="usn" />
+					<label id="passlabel" for="password">PASSWORD</label><br>
+					<input id="pass" type="textbox" name="password"/>
+					<label id="passlabel1" for="password">RE-ENTER PASSWORD</label><br>
+					<input id="pass1" type="textbox" name="password1"/>
+				</div>
+				<div class="submit">
+					<button id="submitbtn" type="submit" onclick="authenticate()">Login</button>
+				</div>
+			</form>
 		</div>
-		<div class="input" id="signupform">
-			signup here
-		</div>
+	
 	</div>
 	<div class="page-container" id="aboutpage">
 		VoteOn is an online voting and polling portal.
