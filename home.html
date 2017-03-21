@@ -19,9 +19,9 @@
 			{
 				login=document.getElementById("loginform");
 				login.style.backgroundColor="#110b15";
-				login.style.color="#dcd5bb";
+				login.style.color="#e9d5bb";
 				signup=document.getElementById("signupform");
-				signup.style.backgroundColor="#dcd5bb";
+				signup.style.backgroundColor="#e9d5bb";
 				signup.style.color="#110b15";
 				dom.innerHTML=loginhtml;
 				document.getElementById("submitbtn").innerHTML="Login";
@@ -30,9 +30,9 @@
 			{
 				signup=document.getElementById("signupform");
 				signup.style.backgroundColor="#110b15";
-				signup.style.color="#dcd5bb";
+				signup.style.color="#e9d5bb";
 				login=document.getElementById("loginform");
-				login.style.backgroundColor="#dcd5bb";
+				login.style.backgroundColor="#e9d5bb";
 				login.style.color="#110b15";
 				dom.innerHTML=loginhtml+signuphtml;
 				document.getElementById("submitbtn").innerHTML="Sign Up";
@@ -67,8 +67,8 @@
 		<div id="top-bar">
 			<a href="#firstpage"><div class="menubaritems" id="voteon">Vote On</div></a>
 			<a href="#aboutpage"><div class="menubaritems" id="about">About</div></a>
-			<a href="#userinput"><div class="menubaritems" id="signup">Signup</div></a>
-			<a href="#userinput"><div class="menubaritems" id="login">Login</div></a>
+			<a href="#userinput"><div class="menubaritems" id="signup" onclick=change('signup')>Signup</div></a>
+			<a href="#userinput"><div class="menubaritems" id="login" onclick=change('login')>Login</div></a>
 		</div>
 	</div>
 	<div class="page-container" id="userinput">
@@ -82,8 +82,6 @@
 					<input id="usn" type="textbox" name="usn" />
 					<label id="passlabel" for="password">PASSWORD</label><br>
 					<input id="pass" type="textbox" name="password"/>
-					<label id="passlabel1" for="password">RE-ENTER PASSWORD</label><br>
-					<input id="pass1" type="textbox" name="password1"/>
 				</div>
 				<div class="submit">
 					<button id="submitbtn" type="submit" onclick="authenticate()">Login</button>

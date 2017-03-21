@@ -11,7 +11,7 @@ div{
 	height:100vh;
 }
 #firstpage{
-	background-image: url("../images/9.jpg");
+	background-image: url("../images/92.jpg");
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: right top;
@@ -52,8 +52,9 @@ div{
 }
 .input{
 	background-color: #1b1221;
-	background-image:url("../images/9.jpg");
-	background-position: right top;
+	background-image:url("../images/14.jpg");
+	background-size: auto;
+	background-position:right center;
 	padding:40px;
 	position: absolute;
     top:0;
@@ -63,9 +64,10 @@ div{
     width: 50%;
     height: 50%;
     margin: auto;
+    border-radius: 20px;
 }
 .inputformhead{
-	background-color: #dcd5bb;
+	background-color: #e9d5bb;
 	color:#110b15;
 	display: inline;
 	padding:0px
@@ -81,11 +83,13 @@ div{
 }
 #loginform{
 	background-color: #110b15;
-	color:#dcd5bb;
+	color:#e9d5bb;
 	left:24.9%;
+	border-radius: 20px 0px 0px 20px;
 }
 #signupform{
 	right:24.9%;
+	border-radius: 0px 20px 20px 0px;
 }
 #input-container{
 	position: absolute;
@@ -102,6 +106,8 @@ div{
 	padding:10px;
 	position: absolute;
 	left: 6.25%;
+	border-radius: 5px;
+	border-color: #fff;
 }
 #usn{
 	top:30px;
@@ -115,7 +121,7 @@ div{
 #usnlabel,#passlabel,#passlabel1{
 	position: absolute;
 	left:6.25%;
-	color:#dcd5bb;
+	color:#110b15;
 }
 #usnlabel{
 	top:10px;
@@ -143,20 +149,22 @@ div{
 	font-family: 'Signika Negative', sans-serif;
 	width: 100%;
 	height:100%;
-	background-color:#dcd5bb;
-	border: none;
+	background: none;
+	border: solid;
+	border-radius: 20px;
 	color:#110b15;
 	font-size: 120%;
 	cursor:pointer;
 }
 #submitbtn:hover{
 	background-color: #110b15;
-	color:#dcd5bb;
+	color:#e9d5bb;
+	border:none;
 }
 #aboutpage{
 	background-color: #110b15;
 	text-align: center;
-	color:#dcd5bb;
+	color:#e9d5bb;
 	padding:200px;
 	height:50vh;
 }
