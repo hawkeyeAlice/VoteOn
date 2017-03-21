@@ -4,12 +4,15 @@
 	include("connect.php");
 
 	$id=$_GET['id'];
+	$check=$_GET['check'];
 	$conf=$_GET['passkey'];
 	$table=$_GET['table'];
-	$query1="SELECT confirmation FROM `$table` WHERE staffid='$staffid'";
-	$query2="UPDATE `$table` SET activated=1 WHERE staffid='$staffid'";
-
-	$result=mysqli_fetch_assoc(mysqli_query($db,$query1));
+	$query1="SELECT confirmation FROM `$table` WHERE $id='$check'";
+	$query2="UPDATE `$table` SET activated=1 WHERE $id='$check'";
+	echo $query1;
+	echo $query2;
+	$result1=mysqli_query($db,$query1);
+	$result=mysqli_fetch_assoc($result1);
 	
 	if($result['confirmation']==$conf)
 	{

@@ -1,3 +1,10 @@
+<?php
+	session_start();
+	if(isset($_SESSION['user']))
+		header("location:Portals/");
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +19,8 @@
 		}
 		function change(type)
 		{
-			var loginhtml="<label id=\"usnlabel\" for=\"usn\">USN</label><br><input id=\"usn\" type=\"textbox\"name=\"usn\" /><label id=\"passlabel\" for=\"password\">PASSWORD</label><br><input id=\"pass\" type=\"textbox\" name=\"password\"/>";
-			var signuphtml="<label id=\"passlabel1\" for=\"password\">RE-ENTER PASSWORD</label><br><input id=\"pass1\" type=\"textbox\" name=\"password1\"/>";
+			var loginhtml="<label id=\"usnlabel\" for=\"usn\">USN</label><br><input id=\"usn\" type=\"textbox\"name=\"usn\" /><label id=\"passlabel\" for=\"password\">PASSWORD</label><br><input id=\"pass\" type=\"password\" name=\"password\"/>";
+			var signuphtml="<label id=\"passlabel1\" for=\"password\">RE-ENTER PASSWORD</label><br><input id=\"pass1\" type=\"password\" name=\"password1\"/><label id=\"emaillabel\" for=\"email\">EMAIL</label><br><input id=\"email\" type=\"textbox\" name=\"email\" />";
 			dom=document.getElementById("input-container");
 			if(type=='login')
 			{
@@ -25,6 +32,7 @@
 				signup.style.color="#110b15";
 				dom.innerHTML=loginhtml;
 				document.getElementById("submitbtn").innerHTML="Login";
+				document.getElementById("submitbtn1").style.bottom="30%";
 			}
 			else if(type=='signup')
 			{
@@ -36,6 +44,7 @@
 				login.style.color="#110b15";
 				dom.innerHTML=loginhtml+signuphtml;
 				document.getElementById("submitbtn").innerHTML="Sign Up";
+				document.getElementById("submitbtn1").style.bottom="5%";
 			}
 		}
 		function authenticate()
@@ -44,21 +53,29 @@
 			dom2=document.getElementById("pass1");
 			dom3=document.getElementById("submitbtn");
 			dom4=document.getElementById("usn");
+			
 			if(dom3.innerHTML=='Login')
 				type='login';
 			else if(dom3.innerHTML=='Sign Up')
 				type='signup';
-			if(dom4.value=="" || dom1.value=="" || (type=='signup' && dom2.value==""))
-			{	alert("Enter all fields");
-				window.location.href = "home.html";
+			
+			if(type=='login' && (dom1.value=="" || dom4.value==""))
+			{	
+				alert("Enter all fields");
 			}
-			else if(dom1.value != dom2.value)
+			else if(type=='signup' && (dom2.value=="" || dom4.value=="" || dom1.value==""))
 			{
-				alert("Passwords dont match");
-				window.location.href = "home.html";
+				alert("Enter all fields");
+			}
+			else if(type=='signup' && dom1.value != dom2.value)
+			{
+				alert("Passwords dont match");	
+			}
+			else
+			{
+				document.getElementById("forminp").action="signup_voter.php";
 			}
 		}
-
 	//-->
 	</script>
 </head>
@@ -76,14 +93,22 @@
 		<div class="input" id="">
 			<div class="inputformhead" id="loginform" onclick="change('login')">Login</div>
 			<div class="inputformhead" id="signupform" onclick="change('signup')">Sign Up</div>
-			<form action="signup_voter.php" method="post">
+			<span id="error">
+			<?
+				if(isset($_SESSION['error']))
+				{	echo $_SESSION['error'];
+					$_SESSION['error']="";
+				}
+			?>
+			</span>
+			<form action="" method="post" id="forminp">
 				<div id="input-container">
 					<label id="usnlabel" for="usn">USN</label><br>
 					<input id="usn" type="textbox" name="usn" />
 					<label id="passlabel" for="password">PASSWORD</label><br>
-					<input id="pass" type="textbox" name="password"/>
+					<input id="pass" type="password" name="password"/>
 				</div>
-				<div class="submit">
+				<div class="submit" id="submitbtn1">
 					<button id="submitbtn" type="submit" onclick="authenticate()">Login</button>
 				</div>
 			</form>
