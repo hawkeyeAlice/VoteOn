@@ -116,7 +116,11 @@
 	
 	</div>
 	<div class="page-container" id="aboutpage">
-		VoteOn is an online voting and polling portal.
+		VoteOn is an online voting and polling portal. Voting being a collective decision to choose a leader under principles such as independence, integrity, transparency, competence, fairness and political privacy.
+		We aim to conduct the class representative election based on this online platform. This online voting interface has two types of users: System Admins and students.
+		On the day of voting, the students are authenticated via email and their respective USN. After the verification procedure is done, he/she can vote for the candidate of his/her choice.
+		Once the deadline is reached, the counting algorithm is automatically run and the winner is declared.
+		
 	</div>
 </body>
 </html>
